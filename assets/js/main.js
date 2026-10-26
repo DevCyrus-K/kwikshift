@@ -138,8 +138,8 @@
         requestAnimationFrame(raf);
     }
 
-    // Preloader
-    $(window).on('load', function () {
+    // Preloader: do not let a slow third-party asset block the whole site.
+    function dismissPreloader() {
         var preloader = $('#preloader-wrap');
 
         if (!preloader.length) {
@@ -151,6 +151,11 @@
                 preloader.remove();
             });
         }, 120);
+    }
+
+    $(window).on('load', dismissPreloader);
+    $(function () {
+        window.setTimeout(dismissPreloader, 1000);
     });
 
     $(document).ready(function () {

@@ -395,6 +395,15 @@ button {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    animation: preloader-failsafe 0s linear 3s forwards;
+}
+
+@keyframes preloader-failsafe {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 }
 
 #preloader-wrap svg {
