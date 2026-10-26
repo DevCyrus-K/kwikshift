@@ -22,6 +22,37 @@
             { id: "local-storage", title: "Storage Solutions", category: "Packing & Storage", image_url: "assets/img/storage-packing-solutions.webp", alt_text: "Kwikshift Movers storage and packing solutions" },
             { id: "local-moving-team", title: "Moving Team", category: "Residential Relocation", image_url: "assets/img/delivery-men-2.webp", alt_text: "Kwikshift Movers team ready for a move" },
             { id: "local-team", title: "Move Planning", category: "Office Relocation", image_url: "assets/img/kwikshift-team.webp", alt_text: "Kwikshift Movers planning a relocation" }
+        ],
+        testimonials: [
+            { id: "ramogi-oweke", anchor: "ramogi-oweke", client_name: "Ramogi Oweke", client_role: "Google review", use_initials: true, testimonial_message: "I recently used Kwikshift Movers for my house move, and they exceeded my expectations. The team was very courteous and arrived earlier than expected, which gave the day a genuinely positive start." },
+            { id: "maurine-chepkemoi", anchor: "maurine-chepkemoi", client_name: "Maurine Chepkemoi", client_role: "Google review", use_initials: true, testimonial_message: "I genuinely enjoyed the experience and did not have to lift a finger. The Kwikshift team handled everything from packing and loading to unloading and arranging my new home, making the move easy and stress-free." },
+            { id: "hyppolyte-oyoo", anchor: "hyppolyte-oyoo", client_name: "Hyppolyte Oyoo", client_role: "Google review", use_initials: true, testimonial_message: "I am deeply grateful to the Kwikshift team for work well done. During my move from Nairobi to Kisumu, the team showed exceptional professionalism and gave me confidence throughout the relocation." },
+            { id: "noreen-kombo", anchor: "noreen-kombo", client_name: "Noreen Kombo", client_role: "Google review", use_initials: true, testimonial_message: "Professional service at a budget-friendly price. Communication was timely, and the team was very flexible in adapting to my moving requirements. I highly recommend them." },
+            { id: "otiko-jairus", anchor: "otiko-jairus", client_name: "Otiko Jairus", client_role: "Google review", use_initials: true, testimonial_message: "I had a good moving experience from Nakuru to Nairobi. The team was professional and handled my belongings carefully. Although the arrival was later than expected, the overall service was smooth and satisfactory, and I would still recommend them." },
+            { id: "alice-njoroge", anchor: "alice-njoroge", client_name: "Alice Njoroge", client_role: "Google review", use_initials: true, testimonial_message: "I highly recommend Kwikshift Movers. I appreciated the clear communication and consistent follow-up all the way to moving day. The team was kind, respectful, and made the whole process easier." },
+            { id: "teckla-mutune", anchor: "teckla-mutune", client_name: "Teckla Mutune", client_role: "Google review", use_initials: true, testimonial_message: "I could not have been more impressed with the service. From my first contact, communication was clear, professional, and friendly. The moving team arrived on time and handled all my belongings with great care." },
+            { id: "jackson-kiilu", anchor: "jackson-kiilu", client_name: "Jackson Kiilu", client_role: "Google review", use_initials: true, testimonial_message: "Very good service from Kwikshift Movers, with excellent and clear communication throughout the moving process." },
+            { id: "kirui-charles", anchor: "kirui-charles", client_name: "KIRUI CHARLES", client_role: "Google review", use_initials: true, testimonial_message: "A great experience, even on less than 24 hours' notice. The staff were professional and courteous, and I would recommend Kwikshift Movers at any time." },
+            { id: "mohamed-athman", anchor: "mohamed-athman", client_name: "Mohamed Athman", client_role: "Google review", use_initials: true, testimonial_message: "The team provided a fast and safe way to move my belongings. The service was efficient, and I felt my items were handled securely throughout." },
+            { id: "emmanuel-kimathi", anchor: "emmanuel-kimathi", client_name: "Emmanuel Kimathi", client_role: "Google review", use_initials: true, testimonial_message: "Kwikshift Movers were on time and very professional. I do not regret choosing to work with the team." },
+            { id: "rachael-nyaguthii", anchor: "rachael-nyaguthii", client_name: "Rachael Nyaguthii", client_role: "Google review", use_initials: true, testimonial_message: "Excellent service from a team that was ready to move me. I enjoyed every part of the moving exercise." },
+            { id: "genevieve-ndinda", anchor: "genevieve-ndinda", client_name: "Genevieve Ndinda", client_role: "Google review", use_initials: true, testimonial_message: "As a recent customer, I must commend Kwikshift for their affordability, reliability, and professionalism throughout the entire process. Great work, and thank you very much." },
+            { id: "esther-kadhengi", anchor: "esther-kadhengi", client_name: "Esther Kadhengi", client_role: "Google review", use_initials: true, testimonial_message: "The team was very respectful and well organised. I would recommend Kwikshift Movers at any time. Thank you." },
+            { id: "katie-makumi", anchor: "katie-makumi", client_name: "Katie Makumi", client_role: "Google review", use_initials: true, testimonial_message: "A great, affordable, and reliable team. I have used Kwikshift Movers and would recommend them. Roy was respectful, and the overall experience was reassuring." },
+            { id: "bridget-maina", anchor: "bridget-maina", client_name: "Bridget Maina", client_role: "Google review", use_initials: true, testimonial_message: "The team handled everything with care. I would highly recommend Kwikshift Movers to anyone planning a move." },
+            { id: "stella-makiya", anchor: "stella-makiya", client_name: "Stella Makiya", client_role: "Google review", use_initials: true, testimonial_message: "A respectful and patient team to work with. They are excellent at what they do, and I appreciate their support." },
+            { id: "zahraa-osman", anchor: "zahraa-osman", client_name: "Zahraa Osman", client_role: "Google review", use_initials: true, testimonial_message: "Good service that arrived on time, with good after-service as well. I highly recommend Kwikshift Movers." },
+            { id: "laura-hunja", anchor: "laura-hunja", client_name: "Laura Hunja", client_role: "Google review", use_initials: true, testimonial_message: "Good service and an easy team to work with. Kwikshift Movers are a leading team." },
+            { id: "ian-rono", anchor: "ian-rono", client_name: "Ian Rono", client_role: "Google review", use_initials: true, testimonial_message: "Excellent service and after-service. I would recommend Kwikshift Movers without hesitation." },
+            { id: "tel-aviv-bor", anchor: "tel-aviv-bor", client_name: "Tel Aviv Bor", client_role: "Google review", use_initials: true, testimonial_message: "The team was professional, punctual, and moved quickly. The service was well organised from start to finish." },
+            { id: "jaliding-kerubo", anchor: "jaliding-kerubo", client_name: "Jaliding Kerubo", client_role: "Google review", use_initials: true, testimonial_message: "Kwikshift Movers are the best movers. I would recommend them widely to anyone looking for relocation support." },
+            { id: "chuchun-ayla", anchor: "chuchun-ayla", client_name: "Chuchun Ayla", client_role: "Google review", use_initials: true, testimonial_message: "A thoroughly professional and positive experience with Kwikshift Movers." },
+            { id: "emma-ooko", anchor: "emma-ooko", client_name: "EMMA OOKO", client_role: "Google review", use_initials: true, testimonial_message: "Excellent service from a team I was happy to trust with my move." },
+            { id: "samuel-sampuerap", anchor: "samuel-sampuerap", client_name: "Samuel Sampuerap", client_role: "Google review", use_initials: true, testimonial_message: "A truly amazing moving experience with Kwikshift Movers." },
+            { id: "cindy-akinyi", anchor: "cindy-akinyi", client_name: "Cindy Akinyi", client_role: "Google review", use_initials: true, testimonial_message: "A very professional service and a team I was pleased to work with." },
+            { id: "biko", anchor: "biko", client_name: "Biko", client_role: "Google review", use_initials: true, testimonial_message: "Exemplary service at its best. Kwikshift Movers delivered a highly positive experience." },
+            { id: "alphonce-manje", anchor: "alphonce-manje", client_name: "Alphonce Manje", client_role: "Google review", use_initials: true, testimonial_message: "The move was well coordinated, orderly, and completed on time. I appreciated the organised approach from the team." },
+            { id: "andia-diaspora-realtor", anchor: "andia-diaspora-realtor", client_name: "ANDIA Diaspora Realtor", client_role: "Google review", use_initials: true, testimonial_message: "A professional and thoroughly satisfactory experience with Kwikshift Movers." }
         ]
     };
     var faqPageItems = [];
@@ -182,6 +213,10 @@
     }
 
     function resolveAvatarUrl(item) {
+        if (item && item.use_initials) {
+            return "";
+        }
+
         var direct = item && (item.client_image || item.client_logo);
 
         if (direct && (String(direct).indexOf("http") === 0 || String(direct).indexOf("data:image/") === 0 || String(direct).indexOf("/") === 0)) {
@@ -597,6 +632,9 @@
             // Check if image exists and is not empty
             var avatarUrl = resolveAvatarUrl(item);
             var hasImage = avatarUrl && avatarUrl.trim() !== '';
+            var ratingMarkup = item.rating === undefined || item.rating === null || item.rating === ""
+                ? ""
+                : '<ul class="rattings" aria-label="Rated ' + escapeHtml(formatRating(item.rating)) + ' out of 5 stars">' + renderStars(item.rating) + '</ul>';
             var thumbContent = hasImage 
                 ? '<img loading="lazy" decoding="async" src="' + escapeHtml(avatarUrl) + '" alt="' + escapeHtml(item.client_name) + ' testimonial photo">'
                 : '<div class="avatar-initials" title="' + escapeHtml(item.client_name) + '">' + escapeHtml(initials) + '</div>';
@@ -612,7 +650,7 @@
                                 '<h3>' + escapeHtml(item.client_name) + ' <span>' + escapeHtml(item.client_role) + '</span></h3>',
                             '</div>',
                             '<p>' + escapeHtml(item.testimonial_message) + '</p>',
-                            '<ul class="rattings" aria-label="Rated ' + escapeHtml(formatRating(item.rating)) + ' out of 5 stars">' + renderStars(item.rating) + '</ul>',
+                            ratingMarkup,
                             '<div class="quote-icon"><i class="fa-sharp fa-solid fa-quote-right"></i></div>',
                         '</div>',
                     '</div>',
@@ -627,6 +665,9 @@
             var nameParts = item.client_name.split(' ');
             var initials = (nameParts[0].charAt(0) + (nameParts[1] ? nameParts[1].charAt(0) : '')).toUpperCase();
             var avatarUrl = resolveAvatarUrl(item);
+            var ratingMarkup = item.rating === undefined || item.rating === null || item.rating === ""
+                ? ""
+                : '<ul class="rattings" aria-label="Rated ' + escapeHtml(formatRating(item.rating)) + ' out of 5 stars">' + renderStars(item.rating) + '</ul>';
             var thumbContent = avatarUrl
                 ? '<img loading="lazy" decoding="async" src="' + escapeHtml(avatarUrl) + '" alt="' + escapeHtml(item.client_name) + ' testimonial photo">'
                 : '<div class="avatar-initials" title="' + escapeHtml(item.client_name) + '">' + escapeHtml(initials) + '</div>';
@@ -642,7 +683,7 @@
                                 '<h3>' + escapeHtml(item.client_name) + ' <span>' + escapeHtml(item.client_role) + '</span></h3>',
                             '</div>',
                             '<p>' + escapeHtml(item.testimonial_message) + '</p>',
-                            '<ul class="rattings" aria-label="Rated ' + escapeHtml(formatRating(item.rating)) + ' out of 5 stars">' + renderStars(item.rating) + '</ul>',
+                            ratingMarkup,
                             '<div class="quote-icon"><i class="fa-sharp fa-solid fa-quote-right"></i></div>',
                         '</div>',
                     '</div>',
