@@ -13,3 +13,7 @@ Thumbs.db
 # PHP dependency/runtime directories
 vendor/
 node_modules/
+
+# Local Vercel project metadata
+.vercel/
+.vercel
