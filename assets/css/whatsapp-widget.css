@@ -1,0 +1,94 @@
+/* WhatsApp Chat Widget - copied from Cleanar/GD Cleaning floating widget UI */
+.floating-whatsapp {
+    position: fixed;
+    left: clamp(14px, 3vw, 28px);
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    z-index: 100000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 18px 40px rgba(37, 211, 102, 0.28);
+    transition: box-shadow 0.3s ease, bottom 0.3s ease, opacity 0.2s ease, visibility 0.2s ease;
+}
+
+body.mobile-menu-open .floating-whatsapp {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.floating-whatsapp::after {
+    content: attr(data-hover-label);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: #1b2a35;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: 0 14px 30px rgba(27, 42, 53, 0.22);
+    pointer-events: none;
+}
+
+.floating-whatsapp:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.55);
+    outline-offset: 3px;
+    box-shadow: 0 22px 46px rgba(31, 170, 82, 0.34);
+}
+
+.floating-whatsapp__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    line-height: 1;
+}
+
+body.cookie-consent-active .floating-whatsapp {
+    bottom: calc(170px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 991px) {
+    .floating-whatsapp {
+        left: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.cookie-consent-active .floating-whatsapp {
+        bottom: calc(235px + env(safe-area-inset-bottom, 0px));
+    }
+}
+
+@media (max-width: 575px) {
+    .floating-whatsapp {
+        width: 44px;
+        height: 44px;
+    }
+
+    .floating-whatsapp__icon {
+        font-size: 30px;
+    }
+
+    .floating-whatsapp::after {
+        left: calc(100% + 10px);
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    body.cookie-consent-active .floating-whatsapp {
+        bottom: calc(285px + env(safe-area-inset-bottom, 0px));
+    }
+}

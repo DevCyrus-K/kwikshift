@@ -1,0 +1,15 @@
+# Server-side credentials and deployment-specific configuration
+.env
+.env.*
+!.env.example
+
+# Runtime and editor artifacts
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# PHP dependency/runtime directories
+vendor/
+node_modules/

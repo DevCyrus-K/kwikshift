@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /config/
+Disallow: /helpers/
+Disallow: /handlers/
+Disallow: /storage/
+Disallow: /includes/
+Disallow: /assets/js/config.js
+Sitemap: https://www.kwikshiftmovers.co.ke/sitemap.xml
