@@ -1,23 +1,9 @@
 (function (window) {
     "use strict";
 
-    function apiBaseUrl() {
-        var base = typeof AppConfig !== "undefined" && AppConfig.apiBase
-            ? AppConfig.apiBase
-            : "";
-
-        return String(base).replace(/\/+$/, "");
-    }
-
-    function report(payload) {
-        fetch(apiBaseUrl() + "/client-errors", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(payload)
-        }).catch(function () {});
+    function report() {
+        // Client-side error reporting is intentionally disabled. The previous
+        // cross-origin endpoint is unavailable and produced repeated CORS errors.
     }
 
     window.onerror = function (message, source, lineno, colno, error) {
@@ -30,7 +16,7 @@
             url: window.location.href
         });
 
-        return true;
+        return false;
     };
 
     window.addEventListener("unhandledrejection", function (event) {

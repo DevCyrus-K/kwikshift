@@ -5,33 +5,9 @@
 (function () {
     "use strict";
 
-    var apiBase = (typeof AppConfig !== "undefined" && AppConfig.apiBase ? AppConfig.apiBase : "").replace(/\/+$/, "");
     var whatsappPhone = "254112587581";
     var whatsappMessage = encodeURIComponent("Hello Kwikshift Movers, I would like help with my move.");
     var whatsappUrl = "https://wa.me/" + whatsappPhone + "?text=" + whatsappMessage;
-
-    function loadSettingsThenCreate() {
-        fetch(apiBase + "/settings/public", {
-            headers: {
-                Accept: "application/json"
-            }
-        })
-            .then(function (response) {
-                return response.ok ? response.json() : null;
-            })
-            .then(function (payload) {
-                var settings = payload && payload.data ? payload.data : null;
-
-                if (settings && settings.whatsapp_url) {
-                    whatsappUrl = settings.whatsapp_url;
-                }
-
-                createWhatsAppWidget();
-            })
-            .catch(function () {
-                createWhatsAppWidget();
-            });
-    }
 
     function createWhatsAppWidget() {
         var widget;
@@ -53,8 +29,8 @@
     }
 
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", loadSettingsThenCreate);
+        document.addEventListener("DOMContentLoaded", createWhatsAppWidget);
     } else {
-        loadSettingsThenCreate();
+        createWhatsAppWidget();
     }
 })();
