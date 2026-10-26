@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.9.0",
+      "includeFiles": "{config/**,helpers/**,handlers/**}"
+    }
+  },
+  "rewrites": [
+    { "source": "/handlers/contact.php", "destination": "/api/contact.php" },
+    { "source": "/handlers/quote.php", "destination": "/api/quote.php" },
+    { "source": "/handlers/review.php", "destination": "/api/review.php" },
+    { "source": "/handlers/apply.php", "destination": "/api/apply.php" }
+  ]
+}

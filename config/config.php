@@ -15,6 +15,7 @@ if (
     PHP_SAPI !== 'cli'
     && FORCE_HTTPS
     && (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off')
+    && (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') !== 'https')
 ) {
     header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], true, 301);
     exit;
