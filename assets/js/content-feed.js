@@ -53,6 +53,20 @@
             { id: "biko", anchor: "biko", client_name: "Biko", client_role: "Google review", use_initials: true, testimonial_message: "Exemplary service at its best. Kwikshift Movers delivered a highly positive experience." },
             { id: "alphonce-manje", anchor: "alphonce-manje", client_name: "Alphonce Manje", client_role: "Google review", use_initials: true, testimonial_message: "The move was well coordinated, orderly, and completed on time. I appreciated the organised approach from the team." },
             { id: "andia-diaspora-realtor", anchor: "andia-diaspora-realtor", client_name: "ANDIA Diaspora Realtor", client_role: "Google review", use_initials: true, testimonial_message: "A professional and thoroughly satisfactory experience with Kwikshift Movers." }
+        ],
+        faqs: [
+            { id: "faq-quote", category: "Quotes", question: "How do I request a moving quote?", answer: "Use the Request Quote form, call us, or contact us on WhatsApp. Share your pickup location, destination, move type, preferred date, and a short description of the items you need moved so our team can guide you accurately." },
+            { id: "faq-cost", category: "Pricing", question: "How is the cost of a move calculated?", answer: "Your quote is based on the move size, locations, access conditions, number of items, packing requirements, distance, and any specialist handling needed. For larger or more complex moves, we may recommend a brief survey before confirming the final quote." },
+            { id: "faq-packing", category: "Packing", question: "Do you provide packing and unpacking services?", answer: "Yes. Kwikshift can provide packing materials, careful packing, loading, unloading, and unpacking or arrangement support. Tell us what level of help you need when requesting your quote." },
+            { id: "faq-booking", category: "Booking", question: "How far in advance should I book my move?", answer: "Booking early gives you the best choice of dates, especially for weekends and month-end periods. We can also assist with short-notice moves when availability allows, so contact us as soon as you know your moving date." },
+            { id: "faq-coverage", category: "Coverage", question: "Which areas do you serve?", answer: "We handle local moves within Nairobi and surrounding areas, as well as long-distance and intercity relocations across Kenya. Share both locations with us and we will confirm the best moving plan." },
+            { id: "faq-care", category: "Safety", question: "How do you protect furniture and fragile items?", answer: "Our team uses appropriate packing materials and careful handling methods for furniture, electronics, glassware, and other fragile belongings. Please point out delicate, valuable, or unusually shaped items during the quote process so we can plan correctly." },
+            { id: "faq-date", category: "Booking", question: "Can I choose my moving date and time?", answer: "Yes. You can give us your preferred moving date when requesting a quote. We will confirm availability and coordinate an arrival window that works with your schedule and building access arrangements." },
+            { id: "faq-office", category: "Office Moves", question: "Do you handle office and commercial relocations?", answer: "Yes. We support office and commercial moves, including packing, dismantling and reassembly where required, secure transport, and coordinated delivery to help reduce downtime for your team." },
+            { id: "faq-storage", category: "Storage", question: "Do you offer storage solutions?", answer: "Packing and storage support is available for moves that need flexible timing or temporary space. Tell us what you need to store, for how long, and your moving dates so we can advise on the available options." },
+            { id: "faq-preparation", category: "Preparation", question: "How should I prepare before moving day?", answer: "Set aside essential documents and valuables, label anything requiring special attention, clear access routes where possible, and tell us about stairs, lifts, parking, or building rules. Our team can also advise on packing preparation before the move." },
+            { id: "faq-long-distance", category: "Long-Distance", question: "Can you move me between cities in Kenya?", answer: "Yes. Kwikshift handles long-distance and intercity moves across Kenya. Provide your collection and destination locations, approximate move size, and preferred date so we can plan transport and timing." },
+            { id: "faq-contact", category: "Support", question: "What if I have a question about my booked move?", answer: "Contact Kwikshift directly by phone, WhatsApp, or email. Our team can help with schedule questions, access details, packing needs, and updates before your moving day." }
         ]
     };
     var faqPageItems = [];
@@ -117,6 +131,10 @@
 
         if (cached) {
             return $.Deferred().resolve(cached).promise();
+        }
+
+        if (getLocalFallback(type, requestData)) {
+            return resolveLocalFallback(type, requestData);
         }
 
         request = $.ajax({
