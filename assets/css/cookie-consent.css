@@ -17,6 +17,8 @@
     box-shadow: none;
     z-index: 9999;
     transform: translateY(calc(100% + 24px));
+    visibility: hidden;
+    pointer-events: none;
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     border: 0;
     font-family: var(--body-font, "DM Sans"), sans-serif;
@@ -24,6 +26,8 @@
 
 .cookie-consent-modal.active {
     transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .cookie-preferences-modal {
