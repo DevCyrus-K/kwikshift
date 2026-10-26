@@ -180,7 +180,7 @@ $(function () {
     setRatingDisplay();
 
     window.KwikshiftFormUtils.initForm("ajax_review_form", {
-        endpoint: "/handlers/review.php",
+        endpoint: "/api/review.php",
         loadingText: "Submitting...",
         loadingToast: "Submitting your review...",
         beforeValidate: function () {

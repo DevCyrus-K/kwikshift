@@ -59,7 +59,7 @@ $(function () {
     }
 
     window.KwikshiftFormUtils.initForm("ajax_contact", {
-        endpoint: "/handlers/contact.php",
+        endpoint: "/api/contact.php",
         loadingText: "Submitting...",
         loadingToast: "Sending your message...",
         beforeValidate: function () {

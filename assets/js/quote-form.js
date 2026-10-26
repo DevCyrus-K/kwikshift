@@ -195,7 +195,7 @@ $(function () {
     updateConditionalFields();
 
     window.KwikshiftFormUtils.initForm("ajax_quote_form", {
-        endpoint: "/handlers/quote.php",
+        endpoint: "/api/quote.php",
         loadingText: "Submitting...",
         loadingToast: "Sending your quote request...",
         beforeValidate: function () {

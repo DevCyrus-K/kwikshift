@@ -190,7 +190,7 @@ $(function () {
     }
 
     window.KwikshiftFormUtils.initForm("career_application_form", {
-        endpoint: "/handlers/apply.php",
+        endpoint: "/api/apply.php",
         loadingText: "Submitting...",
         loadingToast: "Submitting your application...",
         beforeValidate: function () {
