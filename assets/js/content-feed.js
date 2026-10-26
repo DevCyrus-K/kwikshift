@@ -11,6 +11,19 @@
     };
     var contentCachePrefix = "kwikshift:public-content:";
     var contentCacheTtl = 60 * 1000;
+    var localFallbackContent = {
+        gallery: [
+            { id: "local-residential-move", title: "Residential Relocation", category: "Residential Relocation", image_url: "assets/img/residential-moves.webp", alt_text: "Kwikshift Movers residential relocation service" },
+            { id: "local-office-move", title: "Office Relocation", category: "Office Relocation", image_url: "assets/img/office-moving.webp", alt_text: "Kwikshift Movers office relocation service" },
+            { id: "local-packing", title: "Careful Packing", category: "Packing & Storage", image_url: "assets/img/packing-storage.webp", alt_text: "Kwikshift Movers packing service" },
+            { id: "local-long-distance", title: "Long-Distance Move", category: "Long-Distance Transport", image_url: "assets/img/long-distances-moves.webp", alt_text: "Kwikshift Movers long-distance moving service" },
+            { id: "local-residential-packing", title: "Home Packing Support", category: "Residential Relocation", image_url: "assets/img/residential-packing.webp", alt_text: "Kwikshift Movers home packing support" },
+            { id: "local-office-packing", title: "Office Packing", category: "Office Relocation", image_url: "assets/img/office-packing.webp", alt_text: "Kwikshift Movers office packing service" },
+            { id: "local-storage", title: "Storage Solutions", category: "Packing & Storage", image_url: "assets/img/storage-packing-solutions.webp", alt_text: "Kwikshift Movers storage and packing solutions" },
+            { id: "local-moving-team", title: "Moving Team", category: "Residential Relocation", image_url: "assets/img/delivery-men-2.webp", alt_text: "Kwikshift Movers team ready for a move" },
+            { id: "local-team", title: "Move Planning", category: "Office Relocation", image_url: "assets/img/kwikshift-team.webp", alt_text: "Kwikshift Movers planning a relocation" }
+        ]
+    };
     var faqPageItems = [];
     var faqSearchTimer = null;
     var queryParams = new URLSearchParams(window.location.search);
@@ -68,7 +81,7 @@
         var deferred;
 
         if (!endpoint) {
-            return $.Deferred().reject().promise();
+            return resolveLocalFallback(type, requestData);
         }
 
         if (cached) {
@@ -87,15 +100,18 @@
             writeCachedContent(cacheKey, response);
         });
 
-        if (!fallback) {
-            return request;
-        }
-
         deferred = $.Deferred();
         request.done(function (response) {
             deferred.resolve(response);
         }).fail(function () {
-            deferred.resolve(fallback);
+            var localFallback = fallback || getLocalFallback(type, requestData);
+
+            if (localFallback) {
+                deferred.resolve(localFallback);
+                return;
+            }
+
+            deferred.reject();
         });
 
         return deferred.promise();
@@ -115,7 +131,49 @@
         return cleaned;
     }
 
+    function resolveLocalFallback(type, requestData) {
+        var fallback = getLocalFallback(type, requestData);
+
+        return fallback
+            ? $.Deferred().resolve(fallback).promise()
+            : $.Deferred().reject().promise();
+    }
+
+    function getLocalFallback(type, requestData) {
+        var items = localFallbackContent[type];
+        var limit;
+
+        if (!Array.isArray(items) || !items.length) {
+            return null;
+        }
+
+        items = items.slice(0);
+
+        if (requestData.category) {
+            items = items.filter(function (item) {
+                return String(item.category || "").toLowerCase() === String(requestData.category).toLowerCase();
+            });
+        }
+
+        limit = parseInt(requestData.limit, 10);
+        if (limit > 0) {
+            items = items.slice(0, limit);
+        }
+
+        return {
+            success: true,
+            data: items,
+            source: "local-fallback"
+        };
+    }
+
     function resolveImageUrl(item) {
+        var localImage = item && (item.image_url || item.storage_url || item.thumbnail_url || item.image_path);
+
+        if (localImage && (String(localImage).indexOf("assets/") === 0 || String(localImage).indexOf("/") === 0)) {
+            return localImage;
+        }
+
         if (typeof AppConfig !== "undefined" && AppConfig.resolvImageUrl) {
             return AppConfig.resolvImageUrl(item || {});
         }
@@ -193,10 +251,11 @@
                 return;
             }
 
-            wrapper.innerHTML = renderHomeProjectSlides(response.data);
+            wrapper.innerHTML = renderHomeProjectSlides(response.data, response.source !== "local-fallback");
             refreshProjectUi();
         }).fail(function () {
             wrapper.innerHTML = renderCarouselEmptySlide("Gallery unavailable right now.", "Please try again shortly.");
+            refreshProjectUi();
         });
     }
 
@@ -219,6 +278,7 @@
             refreshTestimonialUi();
         }).fail(function () {
             wrapper.innerHTML = renderCarouselEmptySlide("Testimonials unavailable right now.", "Please try again shortly.");
+            refreshTestimonialUi();
         });
     }
 
@@ -257,7 +317,8 @@
             renderPaginatedGrid(items, pageSize, grid, renderTestimonialsGrid, "testimonials-pagination");
             callUi("initWow");
         }).fail(function () {
-            grid.html(renderGridEmptyState("Testimonials unavailable right now.", "Please try again shortly."));
+            grid.html(renderTestimonialsFallbackGrid());
+            $("#testimonials-pagination").hide();
         });
     }
 
@@ -344,13 +405,18 @@
 
             var items = response.data || [];
             var pageSize = 9; // 3 columns x 3 rows
-            renderPaginatedGrid(items, pageSize, grid, renderGalleryGrid, "gallery-pagination");
+            renderPaginatedGrid(items, pageSize, grid, function (pageItems) {
+                return renderGalleryGrid(pageItems, response.source !== "local-fallback");
+            }, "gallery-pagination");
             callUi("initVenoBox");
             callUi("initWow");
             callUi("initGalleryImages");
         }).fail(function () {
-            grid.html(renderGridEmptyState("Gallery unavailable right now.", "Please try again shortly."));
+            grid.html(renderGalleryFallbackGrid());
             $("#gallery-pagination").hide();
+            callUi("initVenoBox");
+            callUi("initWow");
+            callUi("initGalleryImages");
         });
     }
 
@@ -495,14 +561,15 @@
         });
     }
 
-    function renderHomeProjectSlides(items) {
+    function renderHomeProjectSlides(items, animate) {
         return items.map(function (item, index) {
             var imageId = "home-project-img-" + item.id + "-" + Math.random().toString(36).substr(2, 9);
             var imageUrl = resolveImageUrl(item);
+            var animationClass = animate === false ? "" : " wow fade-in-bottom";
             
             return [
                 '<div class="swiper-slide">',
-                    '<div class="project-item wow fade-in-bottom" data-wow-delay="' + escapeHtml(getDelay(index, 200)) + 'ms">',
+                    '<div class="project-item' + animationClass + '" data-wow-delay="' + escapeHtml(getDelay(index, 200)) + 'ms">',
                         '<div class="project-thumb project-view">',
                             '<div class="gallery-image-loader" id="loader-' + imageId + '">',
                                 '<div class="gallery-image-skeleton"></div>',
@@ -605,15 +672,16 @@
         }).join("");
     }
 
-    function renderGalleryGrid(items) {
+    function renderGalleryGrid(items, animate) {
         return items.map(function (item, index) {
             var link = getGalleryCategoryLink(item.category, false);
             var imageId = "gallery-img-" + item.id + "-" + Math.random().toString(36).substr(2, 9);
             var imageUrl = resolveImageUrl(item);
+            var animationClass = animate === false ? "" : " wow fade-in-bottom";
 
             return [
                 '<div class="col-md-4 col-sm-6">',
-                    '<div class="project-item wow fade-in-bottom" data-wow-delay="' + escapeHtml(getDelay(index, 200)) + 'ms">',
+                    '<div class="project-item' + animationClass + '" data-wow-delay="' + escapeHtml(getDelay(index, 200)) + 'ms">',
                         '<div class="project-thumb project-view">',
                             '<div class="gallery-image-loader" id="loader-' + imageId + '">',
                                 '<div class="gallery-image-skeleton"></div>',
@@ -748,6 +816,22 @@
                     "<p>" + escapeHtml(message) + "</p>",
                 "</div>",
             "</div>"
+        ].join("");
+    }
+
+    function renderGalleryFallbackGrid() {
+        return renderGalleryGrid((getLocalFallback("gallery", {}) || {}).data || [], false);
+    }
+
+    function renderTestimonialsFallbackGrid() {
+        return [
+            '<div class="col-12">',
+                '<div class="team-content text-center mt-0 me-0">',
+                    '<h3>Customer reviews are temporarily unavailable.</h3>',
+                    '<p>Please check back shortly, or contact Kwikshift Movers directly for references and moving advice.</p>',
+                    '<a class="default-btn" href="contact">Contact Our Team</a>',
+                '</div>',
+            '</div>'
         ].join("");
     }
 
